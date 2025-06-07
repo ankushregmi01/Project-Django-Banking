@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-banking
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: django-banking
+  template:
+    metadata:
+      labels:
+        app: django-banking
+    spec:
+      containers:
+      - name: django
+        image: django-banking-app:latest
+        ports:
+        - containerPort: 8000
